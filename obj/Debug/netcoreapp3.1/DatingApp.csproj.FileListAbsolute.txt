@@ -1,0 +1,5 @@
+D:\Users\mimicry\DatingApp\obj\Debug\netcoreapp3.1\DatingApp.csprojAssemblyReference.cache
+D:\Users\mimicry\DatingApp\obj\Debug\netcoreapp3.1\DatingApp.csproj.CoreCompileInputs.cache
+D:\Users\mimicry\DatingApp\obj\Debug\netcoreapp3.1\DatingApp.MvcApplicationPartsAssemblyInfo.cache
+D:\Users\mimicry\DatingApp\obj\Debug\netcoreapp3.1\DatingApp.AssemblyInfoInputs.cache
+D:\Users\mimicry\DatingApp\obj\Debug\netcoreapp3.1\DatingApp.AssemblyInfo.cs
