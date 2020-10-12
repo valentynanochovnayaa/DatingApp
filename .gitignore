@@ -1,2 +1,6 @@
 
 *.json
+DatingApp.API/.idea
+DatingApp.API/wwwroot
+.DS_Store
+obj

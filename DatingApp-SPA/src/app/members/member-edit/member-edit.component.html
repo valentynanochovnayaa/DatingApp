@@ -1,0 +1,70 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1 [translate]="'member-edit.yourProfile'"></h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong [translate]="'member-edit.information'"></strong>{{'member-edit.unsavedChangesWarning'| translate}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{photoUrl || '../../../../../assets/user.png'}}" alt="{{user.knownAs}}">
+        <div class="card-body">
+          <div>
+            <strong [translate]="'member-edit.location'"></strong>
+            <p>{{user.city}}, {{user.country}}</p>
+          </div>
+          <div>
+            <strong [translate]="'member-edit.age'"></strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong [translate]="'member-edit.lastActive'"></strong>
+            <p>{{user.lastActive | timeago}}</p>
+          </div>
+          <div>
+            <strong [translate]="'member-edit.memberSince'"></strong>
+            <p>{{user.created | date}}</p>
+          </div>
+          <div class="card-footer">
+              <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block" [translate]="'member-edit.saveChanges'"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab [heading]="'member-edit.editProfile'| translate">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)= "updateUser()">
+              <h4 [translate]="'member-edit.description'"></h4>
+              <textarea name="introduction" rows="6" class="form-control" 
+              [(ngModel)]="user.introduction"></textarea>
+              <h4 [translate]="'member-edit.lookingFor'"></h4>
+              <textarea name="lookingFor" rows="6" class="form-control" 
+              [(ngModel)]="user.lookingFor"></textarea>
+              <h4 [translate]="'member-edit.interests'"></h4>
+              <textarea name="interests" rows="6" class="form-control" 
+              [(ngModel)]="user.interests"></textarea>
+              <h4 [translate]="'member-edit.locationDetails'"></h4>
+              <div class="form-inline">
+                <label for="city" [translate]="'member-edit.city'"></label>
+                <input name="input1" class="form-control" type="text" [(ngModel)]="user.city">
+                <label for="country" [translate]="'member-edit.country'"> </label>
+                <input name="input2" class="form-control" type="text" [(ngModel)]="user.country">
+              </div>
+            </form>
+           
+          </tab>
+          <tab [heading]="'member-edit.editPhotos'| translate">
+            <app-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-photo-editor>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

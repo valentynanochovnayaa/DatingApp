@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <div class="row">
+    <h1 [translate]="'member-detail.usersProfile'" [translateParams]="{knownAs: (user.knownAs)}"></h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../../../assets/user.png'}}" alt="{{user.knownAs}}">
+        <div class="card-body">
+          <div>
+            <strong [translate]="'member-detail.location'"></strong>
+            <p>{{user.city}}, {{user.country}}</p>
+          </div>
+          <div>
+            <strong [translate]="'member-detail.age'"></strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong [translate]="'member-detail.lastActive'"></strong>
+            <p>{{user.lastActive | timeago}}</p>
+          </div>
+          <div>
+            <strong [translate]="'member-detail.memberSince'"></strong>
+            <p>{{user.created | date}}</p>
+          </div>
+          <div class="footer">
+            <div class="btn-group d-flex ">
+              <button class="btn btn-primary w-100" [translate]="'member-detail.like'"></button>
+              <button class="btn btn-success w-100" (click)="selectTab(3)" [translate]="'member-detail.message'"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset" #memberTabs>
+          <tab [heading]="'member-detail.aboutUser'| translate:{'knownAs': (user.knownAs)}">
+            <h4 [translate]="'member-detail.description'">Description</h4>
+            <p>{{user.introduction}}</p>
+            <h4 [translate]="'member-detail.lookingFor'">Looking For</h4>
+            <p>{{user.lookingFor}}</p>
+          </tab>
+          <tab [heading]="'member-detail.interests'| translate">
+            <h4>Interests</h4>
+            <p>{{user.interests}}</p>
+          </tab>
+          <tab [heading]="'member-detail.photos'| translate">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </tab>
+          <tab [heading]="'member-detail.messages'| translate">
+            <app-member-messages [recipientId]="user.id"></app-member-messages>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
